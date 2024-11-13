@@ -14,13 +14,16 @@ const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     font-weight: 400;
   }
+  button {
+    font-family: Roboto_Regular;
+    font-size: 16px;
+    font-weight: 400;
+  }
 `;
 
 root.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <RouterProvider router={router} />
-    </ThemeProvider>
-  </React.StrictMode>
+  <ThemeProvider theme={theme}>
+    <GlobalStyle />
+    <RouterProvider router={router} />
+  </ThemeProvider>
 );
