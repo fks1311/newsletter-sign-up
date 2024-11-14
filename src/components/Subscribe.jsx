@@ -76,14 +76,19 @@ const Layout = styled.div`
 `;
 
 const Letter = styled.section`
+  max-width: 25rem;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   padding: 50px;
-  line-height: 4rem;
   h1 {
-    font-size: 64px;
-    font-weight: 700;
     font-family: Roboto_Bold;
+    font-size: 56px;
+    font-weight: 700;
+    color: ${({ theme: { colors } }) => colors.dark_slate_grey};
+  }
+  span {
+    line-height: 1.3rem;
   }
 `;
 const List = styled.div`
@@ -103,6 +108,7 @@ const FormContainer = styled.form`
   div {
     height: 40px;
     display: flex;
+    align-items: flex-end;
     font-weight: 700;
 
     span {
@@ -118,6 +124,7 @@ const FormContainer = styled.form`
 const Input = styled.input`
   height: 35px;
   padding: 10px;
+  margin-bottom: 1rem;
   outline: none;
   color: ${({ $error, theme: { colors } }) => ($error ? colors.tomato : `black`)};
   border: ${({ $error, theme: { colors } }) => `1px solid ${$error ? colors.tomato : colors.grey}`};

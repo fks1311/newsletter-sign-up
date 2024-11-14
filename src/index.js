@@ -10,14 +10,14 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 const GlobalStyle = createGlobalStyle`
   ${reset}
   body {
-    font-family: Roboto_Regular;
+    font-family: Roboto_Regular, sans-serif;
     font-size: 16px;
     font-weight: 400;
   }
   button {
-    font-family: Roboto_Regular;
+    font-family: Roboto_Bold;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 700;
   }
 `;
 
