@@ -1,22 +1,10 @@
-import styled from "styled-components";
-import { useWindowSize } from "./utils/useWindowSize";
+import { DefaultPage } from "components/DefaultPage";
 import { Subscribe } from "./components/Subscribe";
 
 export default function App() {
-  const width = useWindowSize();
-
   return (
-    <Layout width={width}>
+    <DefaultPage>
       <Subscribe />
-    </Layout>
+    </DefaultPage>
   );
 }
-
-const Layout = styled.div`
-  height: 100vh;
-  width: ${({ width }) => width}px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ theme: { colors } }) => colors.charcoal_grey};
-`;
