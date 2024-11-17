@@ -10,9 +10,12 @@ export const DefaultPage = forwardRef(({ children }, ref) => {
 
 const Layout = styled.div`
   height: 100vh;
-  width: ${({ width }) => width}px;
+  width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   background-color: ${({ theme: { colors } }) => colors.charcoal_grey};
+  @media ${({ theme: { device } }) => device.mobile} {
+  }
 `;

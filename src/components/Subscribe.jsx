@@ -5,6 +5,7 @@ import mobile from "assets/images/illustration-sign-up-mobile.svg";
 import check from "assets/images/icon-list.svg";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Subscribe = () => {
   const windowSize = useWindowSize();
@@ -14,15 +15,19 @@ export const Subscribe = () => {
     formState: { errors },
   } = useForm();
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {}, [error]);
 
   const onValid = () => {
     setError(false);
+    navigate("/success");
   };
   const onInvalid = (data) => {
     data.email?.message && setError(true);
   };
+
+  const handleKeyPress = () => {};
 
   return (
     <Layout>
@@ -56,23 +61,33 @@ export const Subscribe = () => {
               },
             })}
             $error={error}
-            onKeyDown={onValid}
+            onKeyDown={handleKeyPress}
             placeholder="email@company.com"
           />
           <SumitBtn>Subscribe to monthly newsletter</SumitBtn>
         </FormContainer>
       </Letter>
-      {windowSize <= 375 ? <Img src={mobile} /> : <Img src={desktop} />}
+      <div>{windowSize <= 500 ? <Img src={mobile} /> : <Img src={desktop} />}</div>
     </Layout>
   );
 };
 
 const Layout = styled.div`
+  min-width: 375px;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  aspect-ratio: 16 / 9;
   padding: 20px;
   border-radius: 10px;
   background-color: ${({ theme: { colors } }) => colors.white};
+  @media ${({ theme: { device } }) => device.mobile} {
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: stretch;
+    gap: 3rem;
+    padding: 0px;
+    height: 100vh;
+  }
 `;
 
 const Letter = styled.section`
@@ -80,7 +95,7 @@ const Letter = styled.section`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 50px;
+  padding: 2rem;
   h1 {
     font-family: Roboto_Bold;
     font-size: 56px;
@@ -90,14 +105,27 @@ const Letter = styled.section`
   span {
     line-height: 1.3rem;
   }
+  @media ${({ theme: { device } }) => device.mobile} {
+    h1 {
+      font-size: 2rem;
+    }
+  }
 `;
 const List = styled.div`
   width: 100%;
-  line-height: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
   p {
     display: flex;
     gap: 1vw;
     align-items: center;
+  }
+  @media ${({ theme: { device } }) => device.mobile} {
+    p {
+      gap: 5vw;
+      line-height: 1.5rem;
+    }
   }
 `;
 const FormContainer = styled.form`
@@ -146,4 +174,8 @@ const SumitBtn = styled.button`
   }
 `;
 
-const Img = styled.img``;
+const Img = styled.img`
+  width: 100%;
+  display: flex;
+  object-fit: contain;
+`;
