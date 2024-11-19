@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { RouterProvider } from "react-router-dom";
-import { router } from "./utils/router";
 import { theme } from "./utils/style";
 import reset from "styled-reset";
+import { router } from "utils/router";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const GlobalStyle = createGlobalStyle`
