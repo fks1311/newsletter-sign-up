@@ -24,11 +24,6 @@ const GlobalStyle = createGlobalStyle`
 root.render(
   <ThemeProvider theme={theme}>
     <GlobalStyle />
-    <RouterProvider
-      router={router}
-      future={{
-        v7_startTransition: true,
-      }}
-    />
+    <RouterProvider router={router} />
   </ThemeProvider>
 );
